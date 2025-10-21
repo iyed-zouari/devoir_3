@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    #active: native
+    active : git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/iyed-zouari/config-repo.git
+        #native:
+          #search-locations: file:///C:/Users/CBE/IdeaProjects/demo/iyed-spring-cloud/config-repo/
+          default-label: main
+          clone-on-start: true
+
+
+server:
+  port: 9999

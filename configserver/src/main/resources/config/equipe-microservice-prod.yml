@@ -1,0 +1,6 @@
+build :
+  version : "2.0"
+
+author:
+  name: "Iyed Zouari [equipe PROD from config server]"
+  email: "iyedzouari@gmail.com [equipe PROD]"

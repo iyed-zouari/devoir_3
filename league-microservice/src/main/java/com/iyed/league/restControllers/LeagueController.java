@@ -30,25 +30,23 @@ public class LeagueController {
     }
 
 
-    @GetMapping("{name}")
-    public ResponseEntity<LeagueDto> findByLeagueName(@PathVariable("name") String name )
+    @GetMapping("{code}")
+    public ResponseEntity<LeagueDto> getLeagueByCode(@PathVariable("code") String code )
     {
         return new ResponseEntity<LeagueDto>(
-                leagueService.findByLeagueName(name),HttpStatus.OK);
+                leagueService.getLeagueByCode(code),HttpStatus.OK);
     }
+
     @GetMapping("/version")
     public ResponseEntity<String> version()
     {
-        return
-                ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
     }
 
     @GetMapping("/author")
     public  ResponseEntity<String> retrieveAuthorInfo() {
-        return
-                ResponseEntity.status(HttpStatus.OK)
+        return ResponseEntity.status(HttpStatus.OK)
                         .body(configuration.getName()+" "+configuration.getEmail() );
     }
+
 }
-
-

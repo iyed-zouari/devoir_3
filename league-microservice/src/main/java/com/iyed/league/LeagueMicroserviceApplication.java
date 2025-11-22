@@ -21,12 +21,14 @@ public class LeagueMicroserviceApplication {
                     .leagueName("Premier League")
                     .leagueCountry("England")
                     .leagueDescription("Top English football league")
+                    .leagueCode("PL")
                     .build());
 
             leagueRepository.save(League.builder()
                     .leagueName("La Liga")
                     .leagueCountry("Spain")
                     .leagueDescription("Top Spanish football league")
+                    .leagueCode("LL")
                     .build());
         };
     }

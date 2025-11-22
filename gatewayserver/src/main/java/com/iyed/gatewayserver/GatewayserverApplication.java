@@ -15,16 +15,19 @@ public class GatewayserverApplication {
 
 
 
-//    @Bean
-//    public RouteLocator MyRouteConfig(RouteLocatorBuilder routeLocatorBuilder)
-//    {
-//        return routeLocatorBuilder.routes()
-//                .route(p -> p
-//                        .path("/api/leagues/**")
-//                        .uri("lb://LEAGUE-MICROSERVICE"))
-//                .route(p -> p
-//                        .path("/api/equipes/**")
-//                        .uri("lb://EQUIPE-MICROSERVICE"))
-//                .build();
-//    }
+    @Bean
+    public RouteLocator MyRouteConfig(RouteLocatorBuilder routeLocatorBuilder)
+    {
+        return routeLocatorBuilder.routes()
+                .route(p -> p
+                        .path("/api/leagues/**")
+                        .uri("lb://LEAGUE-MICROSERVICE"))
+                .route(p -> p
+                        .path("/api/equipes/**")
+                        .filters( f -> f.circuitBreaker(config ->
+                                config.setName("equipeCircuitBreaker")
+                                        .setFallbackUri("forward:/contactAdmin")))
+                        .uri("lb://EQUIPE-MICROSERVICE"))
+                .build();
+    }
 }

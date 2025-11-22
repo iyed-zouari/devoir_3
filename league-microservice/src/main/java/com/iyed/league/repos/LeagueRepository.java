@@ -4,5 +4,5 @@ import com.iyed.league.entities.League;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LeagueRepository extends JpaRepository<League, Long> {
-    League findByLeagueName(String LeagueName);
+    League findByLeagueCode(String code);
 }

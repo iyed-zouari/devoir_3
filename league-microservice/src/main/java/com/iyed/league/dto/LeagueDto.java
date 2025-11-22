@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LeagueDto {
     private Long id;
-    private String leagueName;
-    private String leagueCountry;
-    private String leagueDescription;
+    private String LeagueName;
+    private String LeagueCode;
+    private String LeagueCountry;
+    private String LeagueDescription;
 }

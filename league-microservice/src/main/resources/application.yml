@@ -1,40 +1,51 @@
+server:
+  port: 8081
 spring:
   profiles:
     active: "prod"
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
   config:
-    import: "optional:configserver:http://localhost:9999/"
+    import: optional:configserver:${CONFIG_SERVICE_URL:http://localhost:9999}
   application:
     name: league-microservice
-
   datasource:
-    url: 'jdbc:h2:mem:depdb'
+#    url: jdbc:mysql://mysqldb:3306/test?useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: root
+      url: 'jdbc:h2:mem:leaguedb'
   h2:
     console:
       enabled: true
-
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-
   cloud:
     config:
       enabled: true
     discovery:
       enabled: true
 
-  eureka:
-    client:
-      service-url:
-        defaultZone: 'http://localhost:8761/eureka/'
-
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-server:
-  port: 8081
 eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
   instance:
     prefer-ip-address: true
+    hostname: localhost
+
+build :
+  version : "10.0"
+
+author:
+  name: "Iyed Zouari"
+  email: "iyedzouari@gmail.com [equipe PROD]"

@@ -14,12 +14,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class EquipeServiceImpl implements EquipeService {
     private final EquipeRepository equipeRepository;
     //private WebClient webClient;
-    private APIClient apiclient;
+    private APIClient apiClient;
 
 
     @Override
     public APIResponseDto getEquipeById(Long id) {
-        Equipe equipe =equipeRepository.findById(Math.toIntExact(id)).get();
+        String dname;
+        Equipe equipe =equipeRepository.findById(id).get();
 
 //        LeagueDto leagueDto = webClient.get()
 //                .uri("http://localhost:8081/api/leagues/" + equipe.getLegCode())
@@ -27,14 +28,18 @@ public class EquipeServiceImpl implements EquipeService {
 //                .bodyToMono(LeagueDto.class)
 //                .block();
 
-        LeagueDto leagueDto = apiclient.findByLeagueName(equipe.getLegCode());
+        LeagueDto leagueDto = apiClient.getLeaByCode(equipe.getLegCode());
+        if (leagueDto == null)
+            dname = "Undefined";
+        else
+            dname = leagueDto.getLeagueName();
 
         EquipeDto equipeDto= new EquipeDto(
                 equipe.getId(),
-                equipe.getName(),
-                equipe.getDescription(),
+                equipe.getEquipeName(),
+                equipe.getEquipeDescription(),
                 equipe.getLegCode(),
-                leagueDto.getLeagueCountry()
+                dname
 
         );
         APIResponseDto apiResponseDto = new APIResponseDto();

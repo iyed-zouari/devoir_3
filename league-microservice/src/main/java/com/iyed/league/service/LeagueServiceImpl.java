@@ -12,15 +12,18 @@ public class LeagueServiceImpl implements LeagueService {
     private LeagueRepository leagueRepository;
 
     @Override
-    public LeagueDto findByLeagueName(String LeagueName) {
-        League leg=leagueRepository.findByLeagueName(LeagueName);
-        return new LeagueDto(
+    public LeagueDto getLeagueByCode(String code) {
+        League leg = leagueRepository.findByLeagueCode(code);
+
+        LeagueDto leagueDto = new LeagueDto(
                 leg.getId(),
                 leg.getLeagueName(),
+                leg.getLeagueCode(),
                 leg.getLeagueCountry(),
                 leg.getLeagueDescription()
-
         );
+
+        return leagueDto;
 
     }
 }

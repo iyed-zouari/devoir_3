@@ -18,7 +18,7 @@ public class League {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String leagueName;
+    private String leagueCode;
     private String leagueCountry;
     private String leagueDescription;
-
 }

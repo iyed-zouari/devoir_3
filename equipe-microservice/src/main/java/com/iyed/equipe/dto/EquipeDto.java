@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EquipeDto {
     private Long id;
-    private String name;
-    private String description;
+    private String EquipeName;
+    private String EquipeDescription;
     private String legCode;
-    private String legcountry;
+    private String LeagueName;
 
 }

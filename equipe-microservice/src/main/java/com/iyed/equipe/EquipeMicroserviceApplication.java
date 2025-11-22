@@ -20,9 +20,9 @@ public class EquipeMicroserviceApplication {
     CommandLineRunner commandLineRunner(EquipeRepository equipeRepository) {
         return args -> {
             equipeRepository.save(Equipe.builder()
-                    .name("Real madrid")
-                    .description("Real madrid est une equipe trés célèbre")
-                    .legCode("La Liga")
+                    .EquipeName("Real madrid")
+                    .EquipeDescription("Real madrid est une equipe trés célèbre")
+                    .legCode("LL")
                     .build());
         };
     }
@@ -31,5 +31,5 @@ public class EquipeMicroserviceApplication {
         return WebClient.builder().build();
     }
 
-
+//test
 }
